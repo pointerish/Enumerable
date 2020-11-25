@@ -1,4 +1,4 @@
-require '../enumerable_blocks'
+require_relative '../enumerable_blocks'
 
 RSpec.describe 'what this Enumerable module' do
   let(:num_array) { [1, 2, 3] }
