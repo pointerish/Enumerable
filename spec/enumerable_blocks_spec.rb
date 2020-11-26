@@ -67,6 +67,10 @@ RSpec.describe 'what this Enumerable module' do
     it 'returns an Enumerator when no block is provided' do
       expect(num_array.my_select).to be_an(Enumerator)
     end
+
+    it 'does not return nil when called with no block' do
+      expect(num_array.my_select).not_to be(nil)
+    end
   end
 
   describe '#my_all?' do
@@ -78,6 +82,10 @@ RSpec.describe 'what this Enumerable module' do
     it 'returns false if at least one collection item does not meet block condition' do
       expect(num_array.my_all? { |item| item.instance_of? String })
         .to eq(false)
+    end
+
+    it 'does not return false when called with no block' do
+      expect(num_array.my_all?).not_to be(false)
     end
   end
 
@@ -91,6 +99,10 @@ RSpec.describe 'what this Enumerable module' do
       expect(num_array.my_any? { |item| item > 5 })
         .to eq(false)
     end
+
+    it 'does not return false when called with no block' do
+      expect(num_array.my_any?).not_to be(false)
+    end
   end
 
   describe '#my_none?' do
@@ -102,6 +114,10 @@ RSpec.describe 'what this Enumerable module' do
     it 'returns false if all of the collection items meets block condition' do
       expect(num_array.my_none? { |item| item < 6 })
         .to eq(false)
+    end
+
+    it 'does not return false when called with no block' do
+      expect(num_array.my_any?).not_to be(false)
     end
   end
 
@@ -125,6 +141,10 @@ RSpec.describe 'what this Enumerable module' do
       expect(str_array.my_count('sumerians'))
         .to eq(1)
     end
+
+    it 'does not return nil when called with no block' do
+      expect(num_array.my_count).not_to be(nil)
+    end
   end
 
   describe '#my_map' do
@@ -143,6 +163,10 @@ RSpec.describe 'what this Enumerable module' do
     it 'returns Enumerator when no block is given' do
       expect(num_array.my_map).to be_an(Enumerator)
     end
+
+    it 'does not return nil when no block is given' do
+      expect(num_array.my_map).not_to be(nil)
+    end
   end
 
   describe '#my_inject' do
@@ -158,7 +182,7 @@ RSpec.describe 'what this Enumerable module' do
       expect(num_array.my_inject(1, :*)).to eq(6)
     end
 
-    it 'The methods receives a zero value as a parameter' do
+    it 'receives a zero value as parameter' do
       expect(num_array.my_inject(0, :*)).to eq(0)
     end
   end
@@ -166,6 +190,10 @@ RSpec.describe 'what this Enumerable module' do
   describe '#multiply_els' do
     it 'returns product of all collection items' do
       expect(multiply_els(num_array)).to eq(6)
+    end
+
+    it 'returns nil when no arguments are given' do
+      expect(multiply_els).to be(nil)
     end
   end
 end
