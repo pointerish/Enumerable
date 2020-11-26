@@ -150,7 +150,7 @@ end
 
 def multiply_els(items = nil)
   return nil if items.nil?
-  
+
   items.my_inject(:*)
 end
 
